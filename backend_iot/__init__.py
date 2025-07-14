@@ -18,6 +18,10 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    from . import iot_data
+    app.register_blueprint(iot_data.bp)
+    app.add_url_rule('/', endpoint='iot_data')
     
     # a simple page that says hello
     @app.route('/hello')
