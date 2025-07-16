@@ -9,7 +9,7 @@ def create_app(test_config=None):
     )
 
     if test_config is None:
-        # Load the instanc config, if it exists, when not testing
+        # Load the instance config, if it exists, when not testing
         app.config.from_pyfile('instance_config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
@@ -22,10 +22,5 @@ def create_app(test_config=None):
     from . import iot_data
     app.register_blueprint(iot_data.bp)
     app.add_url_rule('/', endpoint='iot_data')
-    
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, IoT World!\n'
 
     return app
