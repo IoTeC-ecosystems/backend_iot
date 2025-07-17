@@ -40,6 +40,29 @@ def produce(data):
 
 @bp.route('/coordinates', methods=['POST'])
 def coodinates():
+    def validate_data(data):
+        if 'latitude' not in data:
+            return 'Lat'
+        if 'longitude' not in data:
+            return 'Lon'
+        if 'velocity' not in data:
+            return 'Vel'
+        if 'uuid' not in data:
+            return 'UUID'
+        if 'height' not in data:
+            return 'Hgt'
+        if 'datetime' not in data:
+            return 'DT'
+        return ''
     data = request.get_json()
+    ret = validate_data(data)
+    if len(ret) > 0:
+        return {
+            'status': 400,
+            'error': ret
+        }
     produce(data)
-    return "Response"
+    return {
+        'status': 200,
+        'error': 'success'
+    }
