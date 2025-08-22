@@ -19,7 +19,7 @@ def dict_to_gpsdata(dict, ctx):
 def gpsdata_to_dict(gpsdata, ctx):
     return {"uuid": gpsdata.uuid,
             "latitude": gpsdata.latitude,
-            "longitud": gpsdata.longitude,
+            "longitude": gpsdata.longitude,
             "height": gpsdata.height,
             "velocity": gpsdata.velocity,
             "datetime": gpsdata.datetime,}
