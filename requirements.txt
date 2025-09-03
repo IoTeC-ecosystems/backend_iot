@@ -1,0 +1,6 @@
+flask
+confluent-kafka
+python-schema-registry
+cachetools
+authlib
+pytest
